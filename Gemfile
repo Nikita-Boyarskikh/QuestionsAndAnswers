@@ -52,3 +52,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Semantic UI - CSS framework
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
+# Slim templater for easy generate HTML
+gem 'slim-rails'
+
+# Devise - for authentification, registration, etc with Users
+gem 'devise'
