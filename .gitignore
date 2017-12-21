@@ -115,3 +115,10 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+#################################################################################
+#                                   PROJECT SPECIFIC                            #
+#################################################################################
+
+# Typescript bundle
+app/assets/javascripts/dist

@@ -1,5 +1,10 @@
 {
   "name": "QuestionsAndAnswers",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.2.17"
+  }
 }
