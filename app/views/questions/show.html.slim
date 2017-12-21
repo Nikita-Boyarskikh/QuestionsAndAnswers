@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @question.title
+p
+  strong Text:
+  = @question.text
+p
+  strong Rating:
+  = @question.rating
+p
+  strong Tag:
+  = @question.tag
+p
+  strong Author:
+  = @question.author
+
+=> link_to 'Edit', edit_question_path(@question)
+'|
+=< link_to 'Back', questions_path
