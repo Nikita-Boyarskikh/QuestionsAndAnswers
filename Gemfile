@@ -61,3 +61,7 @@ gem 'slim-rails'
 
 # Devise - for authentification, registration, etc with Users
 gem 'devise'
+
+# Resque - Redis based tasks queue
+gem 'resque'
+gem 'resque-scheduler'
