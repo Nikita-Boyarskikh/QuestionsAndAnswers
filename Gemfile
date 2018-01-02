@@ -68,3 +68,22 @@ gem 'devise'
 # Resque - Redis based tasks queue
 gem 'resque'
 gem 'resque-scheduler'
+
+# For loading and processing images
+gem 'carrierwave'
+gem 'mini_magick'
+
+# For sending data directly to js from rails
+gem 'gon'
+
+# For pagination
+gem 'kaminari'
+
+# For faster JSON
+gem 'oj'
+
+# File validators
+gem 'file_validators'
+
+# Full text search engine Sphinx
+gem 'thinking-sphinx'
