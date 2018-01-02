@@ -2,6 +2,7 @@
   "name": "QuestionsAndAnswers",
   "private": true,
   "dependencies": {
+    "@types/semantic-ui": "^2.2.6",
     "typescript": "^2.6.2"
   },
   "devDependencies": {

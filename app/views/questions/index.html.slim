@@ -1,29 +1,19 @@
-h1 Listing questions
+h1.ui.dividing.header Listing questions
 
-table
-  thead
+.ui.link.two.stackable.cards
+  - @questions.each do |question|
     tr
-      th Title
-      th Text
-      th Rating
-      th Tag
-      th Author
-      th
-      th
-      th
-
-  tbody
-    - @questions.each do |question|
-      tr
-        td = question.title
-        td = question.text
-        td = question.rating
-        td = question.tag
-        td = question.author
-        td = link_to 'Show', question
-        td = link_to 'Edit', edit_question_path(question)
-        td = link_to 'Destroy', question, data: { confirm: 'Are you sure?' }, method: :delete
+      td = question.title
+      td = question.text
+      td = question.rating
+      td = question.tag
+      td = question.author
+      td = link_to 'Show', question
+      td = link_to 'Edit', edit_question_path(question)
+      td = link_to 'Destroy', question, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
+- if @questions.empty?
+  p = 'Nothing to show'
 
-= link_to 'New Question', new_question_path
+= link_to 'New Question', new_question_path, class: 'ui button large primary'
