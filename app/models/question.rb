@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
-  belongs_to :tag
-  belongs_to :author
+  has_many :tag
+  has_many :answer
+  has_many :like
+  belongs_to :user
 end
