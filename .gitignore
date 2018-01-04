@@ -122,3 +122,10 @@ fabric.properties
 
 # Typescript bundle
 app/assets/javascripts/dist
+public/assets
+
+# Generic sphinx configs
+*.sphinx.conf
+
+# Sphinx files
+db/sphinx
