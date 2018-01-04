@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1.json
   def update
     respond_to do |format|
-      if @answer.update(answer_params)
+      if @answer.update(text: '')
         format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @answer }
       else
@@ -69,6 +69,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:text, :rating, :is_best, :question_id)
+      params.require(:answer).permit(:text, :question_id, :author_id)
     end
 end

@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyText
-  rating: 1
+  author: one
+  text: 'Answer one'
+  rating: 0
   is_best: false
   question: one
 
 two:
-  text: MyText
-  rating: 1
-  is_best: false
+  author: two
+  text: 'Answer two'
+  rating: -1
+  is_best: true
   question: two

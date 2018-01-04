@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  text: MyText
+  title: 'First topic'
+  text: 'Test text 1'
   rating: 1
-  tag: one
   author: one
 
 two:
-  title: MyString
-  text: MyText
-  rating: 1
-  tag: two
+  title: 'Second topic'
+  text: 'Test text 2'
+  rating: 0
   author: two

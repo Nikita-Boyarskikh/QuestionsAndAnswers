@@ -13,7 +13,7 @@ table
   tbody
     - @likes.each do |like|
       tr
-        td = like.user
+        td = like.author
         td = like.question
         td = like.answer
         td = link_to 'Show', like

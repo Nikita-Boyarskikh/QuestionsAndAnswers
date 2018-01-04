@@ -17,7 +17,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tag" do
     assert_difference('Tag.count') do
-      post tags_url, params: { tag: { title: @tag.title } }
+      post tags_url, params: { tag: { title: 'NewTag' } }
     end
 
     assert_redirected_to tag_url(Tag.last)
