@@ -1,16 +1,26 @@
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
   timeout: 5000
+  port: 5432
+  username: boyanik
+  password:
+
+docker: &docker
+  <<: *default
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  database: <%= ENV['POSTGRES_DB'] %>
+  host: db
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: questions_and_answers_dev
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: questions_and_answers_test
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  <<: *docker
