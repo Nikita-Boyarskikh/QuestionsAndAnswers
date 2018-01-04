@@ -1,0 +1,35 @@
+default: &default
+  stopwords: <%= Rails.root.join('config', 'sphinx', 'stopwords.txt') %>
+  wordforms: <%= Rails.root.join('config', 'sphinx', 'wordforms.txt') %>
+  exceptions: <%= Rails.root.join('config', 'sphinx', 'exceptions.txt') %>
+  mem_limit: 256M
+  expand_keywords: 1
+  index_exact_words: 1
+  min_infix_len: 3
+  min_word_len: 3
+  ngram_len: 3
+  preopen: 1
+  log: <%= Rails.root.join('log', 'sphinx.log') %>
+  morphology: stem_enru
+  per_page: 100000
+  utf8: true
+  mysql41: 9421
+  charset_table: "0..9, A..Z->a..z, _, a..z, \
+    U+410..U+42F->U+430..U+44F, U+430..U+44F, U+401->U+0435, U+451->U+0435"
+
+development:
+  <<: *default
+  query_log: <%= Rails.root.join('log', 'sphinx_query.log') %>
+
+staging:
+  <<: *default
+  mysql41: 9419
+
+production:
+  <<: *default
+  mysql41: 9450
+
+test:
+  <<: *default
+  mysql41: 9418
+  quiet_deltas: true
