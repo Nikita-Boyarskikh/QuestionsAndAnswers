@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string   :fullname,           null: false
       t.string   :encrypted_password, null: false
       t.datetime :birthday
-      t.string   :avatar_url
+      t.references :avatar, foreign_key: true, null: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -22,6 +22,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
+
+      t.integer :questions_count, default: 0, null: false
+      t.integer :answers_count,   default: 0, null: false
 
       t.timestamps null: false
     end
