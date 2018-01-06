@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104223940) do
+ActiveRecord::Schema.define(version: 20180105223959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,19 +36,20 @@ ActiveRecord::Schema.define(version: 20180104223940) do
   create_table "likes", force: :cascade do |t|
     t.bigint "question_id"
     t.bigint "answer_id"
+    t.bigint "author_id"
     t.integer "like", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "author_id"
     t.index ["answer_id"], name: "index_likes_on_answer_id"
     t.index ["author_id"], name: "index_likes_on_author_id"
     t.index ["question_id"], name: "index_likes_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "title", limit: 30
+    t.string "title", limit: 255
     t.text "text", null: false
     t.integer "rating", default: 0
+    t.integer "answers_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id"
@@ -58,6 +59,8 @@ ActiveRecord::Schema.define(version: 20180104223940) do
 
   create_table "tags", force: :cascade do |t|
     t.string "title", limit: 255
+    t.integer "questions_count", default: 0, null: false
+    t.integer "answers_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_tags_on_title", unique: true
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20180104223940) do
     t.string "fullname", null: false
     t.string "encrypted_password", null: false
     t.datetime "birthday"
-    t.string "avatar_url"
+    t.bigint "avatar_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -87,8 +90,11 @@ ActiveRecord::Schema.define(version: 20180104223940) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "questions_count", default: 0, null: false
+    t.integer "answers_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["avatar_id"], name: "index_users_on_avatar_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname", "encrypted_password"], name: "index_users_on_nickname_and_encrypted_password"
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
@@ -99,9 +105,9 @@ ActiveRecord::Schema.define(version: 20180104223940) do
   add_foreign_key "answers", "users", column: "author_id"
   add_foreign_key "likes", "answers"
   add_foreign_key "likes", "questions"
-  add_foreign_key "likes", "users", column: "author_id"
   add_foreign_key "questions", "users", column: "author_id"
   add_foreign_key "tags_info", "answers"
   add_foreign_key "tags_info", "questions"
   add_foreign_key "tags_info", "tags"
+  add_foreign_key "users", "avatars"
 end
