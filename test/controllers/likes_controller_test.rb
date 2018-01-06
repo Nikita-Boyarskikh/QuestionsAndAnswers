@@ -22,7 +22,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
           answer_id: @like.answer_id,
           question_id: @like.question_id,
           author_id: @like.author_id,
-          like: 456
+          like: 1
         }
       }
     end

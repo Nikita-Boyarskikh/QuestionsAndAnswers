@@ -4,12 +4,13 @@ one:
   author: one
   text: 'Answer one'
   rating: 0
-  is_best: false
+  is_best: true
   question: one
 
 two:
-  author: two
+  author: one
   text: 'Answer two'
   rating: -1
-  is_best: true
-  question: two
+  is_best: false
+  question: one
+  tags: one, two

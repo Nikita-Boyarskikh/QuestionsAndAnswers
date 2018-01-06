@@ -4,10 +4,11 @@ one:
   title: 'First topic'
   text: 'Test text 1'
   rating: 1
-  author: one
+  author: two
+  tags: one
 
 two:
   title: 'Second topic'
   text: 'Test text 2'
   rating: 0
-  author: two
+  author: one
