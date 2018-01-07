@@ -1,5 +1,5 @@
-require "test_helper"
-require '../app/helpers/sphinx_helper'
+require 'test_helper'
+require 'sphinx_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include SphinxHelper

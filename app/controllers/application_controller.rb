@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
 
   def verify_captcha(response)
     result = RestClient.post(
-        "https://www.google.com/recaptcha/api/siteverify",
-        secret: Rails.application.secrets[:recaptcha]["secret_key"],
+        'https://www.google.com/recaptcha/api/siteverify',
+        secret: Rails.application.secrets[:recaptcha][:secret_key],
         response: response
     )
 
-    JSON.parse(result)["success"]
+    JSON.parse(result)[:success]
   end
 
 end
