@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :answers
-  resources :questions
-  resources :likes
-  resources :tags
+  resources :answers, except: :destroy
+  resources :questions, except: :destroy
+  resources :likes, only: [:create, :update]
+  resources :tags, only: [:index, :create, :show]
   devise_for :users
   root 'questions#index'
 end

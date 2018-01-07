@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update]
 
   # GET /questions
   # GET /questions.json
@@ -48,16 +48,6 @@ class QuestionsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /questions/1
-  # DELETE /questions/1.json
-  def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
