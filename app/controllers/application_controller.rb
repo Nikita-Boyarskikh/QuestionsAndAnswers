@@ -9,4 +9,17 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale = session[:locale] || I18n.default_locale
   end
+
+  protected
+
+  def verify_captcha(response)
+    result = RestClient.post(
+        "https://www.google.com/recaptcha/api/siteverify",
+        secret: Rails.application.secrets[:recaptcha]["secret_key"],
+        response: response
+    )
+
+    JSON.parse(result)["success"]
+  end
+
 end
