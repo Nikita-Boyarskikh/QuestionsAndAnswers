@@ -15,8 +15,8 @@ class ApplicationRecord < ActiveRecord::Base
     "#{what.class.name.demodulize.downcase.pluralize}_count"
   end
 
-  def fix_tags_format(model)
-    !!fix_tags(model.tags)
+  def fix_tags_format
+    !!fix_tags(self.tags)
   end
 
   def fix_tags(tags)

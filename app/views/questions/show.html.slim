@@ -10,8 +10,8 @@ p
   strong Rating:
   = @question.rating
 p
-  strong Tag:
-  = @question.tag
+  strong Tags:
+  = @question.tags.join(', ')
 p
   strong Author:
   = @question.author

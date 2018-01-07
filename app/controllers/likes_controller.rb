@@ -20,22 +20,10 @@ class LikesController < ApplicationController
   def update
     respond_to do |format|
       if @like.update(like_params)
-        format.html { redirect_to @like, notice: 'Like was successfully updated.' }
-        format.json { render :show, status: :ok, location: @like }
+        format.json { render json: @like, status: :ok }
       else
-        format.html { render :edit }
         format.json { render json: @like.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /likes/1
-  # DELETE /likes/1.json
-  def destroy
-    @like.destroy
-    respond_to do |format|
-      format.html { redirect_to likes_url, notice: 'Like was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
