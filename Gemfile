@@ -23,9 +23,6 @@ gem 'autoprefixer-rails'
 # For hot preloading pages
 gem 'turbolinks'
 
-# For embedded V8 for ruby
-gem 'therubyracer', platforms: :ruby
-
 # JS uglifier
 gem 'uglifier'
 # JQuery JS framework
@@ -54,17 +51,11 @@ gem 'interactor'
 # encapsulates authorization logic
 gem 'pundit'
 
-# exception notification
-gem 'rollbar'
-
 # JBuilder JSON templater
 gem 'jbuilder'
 
 # Slim templater for HTML
 gem 'slim-rails'
-
-# Add checker for life checks
-gem 'health_check'
 
 # For loading and processing images
 gem 'carrierwave'
@@ -90,6 +81,9 @@ gem 'jdbc-mysql', :platform => :jruby
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# For use .env file as environment variables
+gem 'dotenv-rails'
+
 # Devise - for authentification, registration, etc with Users
 gem 'devise'
 
@@ -105,29 +99,17 @@ gem 'flamegraph'
 gem 'stackprof'
 
 group :development do
-  # for checking application for common security vulnerabilities
-  gem 'brakeman'
-
-  # for detecting N+1 queries and unused eager loading
-  gem 'bullet'
-
-  # for scanning the Gemfile for insecure dependencies based on published CVEs
-  gem 'bundler-audit'
-
-  # For directly open emails (not send)
-  gem 'letter_opener'
-
-  # For generating
-  gem 'rails-erd'
+  # For generating database schema image
+  gem 'rails-erd', require: false
 
   # For custom rails console
-  gem 'pry-rails'
+  gem 'pry-rails', require: false
 
   # Rails web console
-  gem 'web-console'
+  gem 'web-console', require: false
 
   # For generate HTML documentation
-  gem 'rdoc'
+  gem 'rdoc', require: false
 
   # Preloading and hot reloading from source server
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -136,17 +118,26 @@ group :development do
 end
 
 group :development, :test do
-  gem "dotenv-rails"
-  gem "factory_bot_rails"
-  gem "faker"
-  gem "awesome_print"
-end
+  # for checking application for common security vulnerabilities
+  gem 'brakeman', require: false
 
-group :test do
+  # for detecting N+1 queries and unused eager loading
+  gem 'bullet', require: false
 
-  ###########
-  # Linters #
-  ###########
+  # for scanning the Gemfile for insecure dependencies based on published CVEs
+  gem 'bundler-audit', require: false
+
+  # For directly open emails (not send)
+  gem 'letter_opener'
+
+  # Fixture replacement
+  gem 'factory_bot_rails'
+
+  # For generating fake data such as names, addresses, and phone numbers
+  gem 'faker'
+
+  # For pretty print debug info
+  gem 'awesome_print', require: false
 
   # Linter for *.rb files
   gem 'rubocop', require: false
@@ -159,6 +150,12 @@ group :test do
 
   # Code climate checker
   gem 'codeclimate-test-reporter', require: false
+end
+
+group :test do
+  ###########
+  # Linters #
+  ###########
 
   # Database cleaner
   gem 'database_cleaner'
@@ -186,11 +183,18 @@ group :development, :test do
 end
 
 group :staging, :production do
+  # exception notification
+  gem 'rollbar'
+  
+  # Add checker for life checks
+  gem 'health_check'
+
+  # For embedded V8 for ruby
+  gem 'therubyracer', platforms: :ruby
+
   # Performance checker
   gem 'newrelic_rpm'
-end
 
-group :production do
   # Resque - Redis based tasks queue
   gem 'resque'
   gem 'resque-scheduler'
