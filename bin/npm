@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+VENDOR_PATH = File.expand_path('..', __dir__)
+Dir.chdir(VENDOR_PATH) do
+  begin
+    exec "/usr/bin/env npm #{ARGV.join(" ")}"
+  rescue Errno::ENOENT
+    $stderr.puts "NPM executable was not detected in the system."
+    exit 1
+  end
+end
