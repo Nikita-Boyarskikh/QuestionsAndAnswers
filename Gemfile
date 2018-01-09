@@ -100,7 +100,7 @@ gem 'stackprof'
 
 group :development do
   # For generating database schema image
-  gem 'rails-erd', require: false
+  gem 'rails-erd'
 
   # For custom rails console
   gem 'pry-rails', require: false
