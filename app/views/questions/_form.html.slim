@@ -13,12 +13,6 @@
     = f.label :text
     = f.text_area :text
   .field
-    = f.label :rating
-    = f.number_field :rating
-  .field
     = f.label :tags
-    = f.text_field :tags
-  .field
-    = f.label :author
-    = f.text_field :author
+    = f.collection_select :tags, Tag.all, :id, :title
   .actions = f.submit

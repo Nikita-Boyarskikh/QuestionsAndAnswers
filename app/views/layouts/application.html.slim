@@ -4,39 +4,39 @@ html lang="en"
     meta charset="utf-8" /
     meta content="IE=edge" http-equiv="X-UA-Compatible" /
     meta content="width=device-width, initial-scale=1" name="viewport" /
-    title = t(:title) + ' | ' + yield(:title)
+    title = t('.title') + ' | ' + yield(:title)
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body.pushable
     .ui.large.top.fixed.menu.transition.hidden
       .ui.container
-        = link_to t(:Home), root_path, class: 'active item'
+        = link_to t('.Home'), root_path, class: 'active item'
         .right.menu
           .item
-            a.ui.button#login #{t(:Login)}
+            a.ui.button#login #{t '.Login'}
           .item
-            a.ui.primary.button#signup #{t(:Signup)}
+            a.ui.primary.button#signup #{t '.Signup'}
     .ui.vertical.inverted.sidebar.menu.left
-      = link_to t(:Home), root_path, class: 'active item'
-      = link_to t(:Login), new_user_session_path, class: 'item'
-      = link_to t(:Signup), new_user_registration_path, class: 'item'
+      = link_to t('.Home'), root_path, class: 'active item'
+      = link_to t('.Login'), new_user_session_path, class: 'item'
+      = link_to t('.Signup'), new_user_registration_path, class: 'item'
     .pusher
       .ui.inverted.vertical.masthead.center.aligned.segment
         .ui.container
           .ui.large.secondary.inverted.pointing.menu
             a.toc.item
               i.sidebar.icon
-            = link_to t('Home'), root_path, class: 'active item'
+            = link_to t('.Home'), root_path, class: 'active item'
             .right.item
-              = link_to t('Login'), new_user_session_path, class: 'ui inverted button'
-              = link_to t('Signup'), new_user_registration_path, class: 'ui inverted button'
+              = link_to t('.Login'), new_user_session_path, class: 'ui inverted button'
+              = link_to t('.Signup'), new_user_registration_path, class: 'ui inverted button'
         .ui.text.container
           h1.ui.inverted.header
-            | #{t('QuestionsAndAnswers')}
+            | #{t '.title'}
           .ui.huge.primary.button
-            | #{t('Get Started')}
+            | #{t '.GetStarted'}
             i.right.arrow.icon
       .ui.vertical.stripe.segment
-        .ui.text.container
+        .ui.text.container.segment.padded.piled
           == yield

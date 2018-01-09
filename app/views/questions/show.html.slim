@@ -11,10 +11,10 @@ p
   = @question.rating
 p
   strong Tags:
-  = @question.tags.join(', ')
+  = @question.tags.select(:title).map {|t| t.title}.join(', ')
 p
   strong Author:
-  = @question.author
+  = @question.author.fullname
 
 => link_to 'Edit', edit_question_path(@question)
 '|

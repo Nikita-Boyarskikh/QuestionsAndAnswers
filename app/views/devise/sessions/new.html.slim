@@ -1,0 +1,24 @@
+h2 #{t :LogIn}
+
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = devise_error_messages!
+
+  .field
+    = f.label :email
+    br
+    = f.email_field :email, autofocus: true, autocomplete: 'email'
+
+  .field
+    = f.label :password
+    br
+    = f.password_field :password, autocomplete: 'off'
+
+  - if devise_mapping.rememberable?
+    .field
+      = f.check_box :remember_me
+      = f.label :remember_me
+
+  .actions
+    = f.submit t(:LogIn)
+
+= render 'devise/shared/links'

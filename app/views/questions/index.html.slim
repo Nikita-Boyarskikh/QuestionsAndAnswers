@@ -1,18 +1,28 @@
-h1.ui.dividing.header Listing questions
+h1.ui.header Listing questions
+.ui.hidden.divider
 
 .ui.link.two.stackable.cards
   - @questions.each do |question|
-    tr
-      td = question.title
-      td = question.text
-      td = question.rating
-      td = question.tags.join(', ')
-      td = question.author
-      td = link_to 'Show', question
-      td = link_to 'Edit', edit_question_path(question)
-
+    = link_to(question, class: 'card') do
+      .content
+        .header = truncate question.title, length: 20
+        .meta
+          span.right.floated = time_ago_in_words(question.created_at)
+          span.left.floated = question.author.fullname
+          / link_to(question.author.fullname, question.author)
+          / - question.tags.select(:id, :title).each do |tag|
+          /   = link_to tag.title, tag, class: 'ui label'
+        .description
+          p = truncate question.text, length: 20
+      .extra.content
+        span.right.floated
+          /- if
+          i.heart.outline.like.icon
+          = question.rating
+      /   = link_to t('global.Details'), question
+      /   = link_to t('global.Edit'), edit_question_path(question)
 br
 - if @questions.empty?
-  p = 'Nothing to show'
+  p = t('.Nothing')
 
-= link_to 'New Question', new_question_path, class: 'ui button large primary'
+= link_to t('.New'), new_question_path, class: 'ui button large primary'
