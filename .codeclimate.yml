@@ -1,0 +1,37 @@
+---
+engines:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  coffeelint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+      - typescript
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+    channel: rubocop-0-48
+    checks:
+      Rubocop/Style/PercentLiteralDelimiters:
+        enabled: true
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.erb"
+  - "**.rb"
+  - "**.slim"
+  - "**.ts"
+  - "**.js"
+exclude_paths:
+- bin/
+- config/
+- db/
+- spec/
+- lib/

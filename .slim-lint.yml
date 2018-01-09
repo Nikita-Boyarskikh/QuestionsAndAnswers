@@ -1,0 +1,38 @@
+skip_frontmatter: false
+
+linters:
+  CommentControlStatement:
+    enabled: true
+
+  ConsecutiveControlStatements:
+    enabled: true
+    max_consecutive: 2
+
+  EmptyControlStatement:
+    enabled: true
+
+  EmptyLines:
+    enabled: true
+
+  RedundantDiv:
+    enabled: true
+
+  LineLength:
+    enabled: true
+    max: 80
+
+  RuboCop:
+    enabled: true
+    ignored_cops: []
+
+  Tab:
+    enabled: true
+
+  TagCase:
+    enabled: true
+
+  TrailingBlankLines:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
