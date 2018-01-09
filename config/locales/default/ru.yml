@@ -1,7 +1,27 @@
 ru:
-  title: 'SpaceInvasion'
-  Home: 'Домой'
-  QuestionsAndAnswers: 'Вопросы и ответы'
-  Get Started: 'Начать'
-  Login: 'Войти'
-  Signup: 'Регистрация'
+  layouts:
+    application:
+      title: 'Вопросы и ответы'
+      Home: 'Домой'
+      GetStarted: 'Начать'
+      Login: 'Войти'
+      Signup: 'Регистрация'
+
+  global:
+    error: 'ошибка'
+    Edit: 'Редактировать'
+    Details: 'Подробнее'
+
+  questions:
+    index:
+      SuccessfullyCreated: 'Вопрос успешно создан.'
+      SuccessfullyUpdated: 'Вопрос успешно обновлён.'
+      Nothing: 'Ещё нет ни одного вопроса. Вы можете стать первым :)'
+      New: 'Задать вопрос'
+
+  answers:
+    index:
+      SuccessfullyCreated: 'Ответ успешно создан.'
+      SuccessfullyUpdated: 'Ответ успешно обновлён.'
+    form:
+      NotSaved: 'Ответ не был сохранён из-за %{error}:'
