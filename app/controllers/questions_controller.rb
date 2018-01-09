@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to @question, notice: t('.SuccessfullyCreated') }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.html { redirect_to @question, notice: t('.SuccessfullyUpdated') }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit }
