@@ -6,7 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails'
-gem 'pg'
+gem 'bundler'
+gem 'pg', '~> 0.21'
 gem 'puma'
 
 ##########
@@ -23,14 +24,17 @@ gem 'autoprefixer-rails'
 # For hot preloading pages
 gem 'turbolinks'
 
+# For React
+gem 'react-rails'
+
 # JS uglifier
 gem 'uglifier'
 # JQuery JS framework
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
+
 # For fix compability
 gem 'browserify-rails'
-# React JS framework
-gem 'react-rails', github: 'reactjs/react-rails'
 
 # Email templater
 gem 'inky-rb', require: 'inky'
@@ -48,8 +52,8 @@ gem 'draper' # to decorate models for views
 # encapsulates application's business logic
 gem 'interactor'
 
-# encapsulates authorization logic
-gem 'pundit'
+# roles for users
+gem 'rolify'
 
 # JBuilder JSON templater
 gem 'jbuilder'
@@ -66,6 +70,7 @@ gem 'gon'
 
 # For pagination
 gem 'kaminari'
+gem 'kaminari-i18n'
 
 # For faster JSON
 gem 'oj'
@@ -86,6 +91,17 @@ gem 'dotenv-rails'
 
 # Devise - for authentification, registration, etc with Users
 gem 'devise'
+gem 'devise-i18n'
+
+# CanCanCan - for declare, who can what
+gem 'cancancan'
+
+# Admin interface
+gem 'activeadmin'
+
+# Localization for numbers, dates, error, activerecord
+gem 'rails-i18n', '~> 5.1'
+gem 'i18n-js'
 
 ##############
 # Monitoring #
@@ -110,6 +126,9 @@ group :development do
 
   # For generate HTML documentation
   gem 'rdoc', require: false
+
+  # For update build-in localizations
+  gem 'rails-i18n-updater'
 
   # Preloading and hot reloading from source server
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -168,6 +187,9 @@ group :test do
 
   # For testing mailers
   gem 'email_spec'
+
+  # For testing localization
+  gem 'i18n-spec'
 
   # For mock HTTP requests
   gem 'webmock', require: false
