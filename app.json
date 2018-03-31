@@ -1,7 +1,7 @@
 {
   "name": "queueoverflow.ru",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed:development"
+    "postdeploy": "bundle exec rake db:schema:load db:seed:production"
   },
   "env": {
     "HOST": { "required": true },
