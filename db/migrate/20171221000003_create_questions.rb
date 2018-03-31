@@ -9,7 +9,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_reference   :questions, :author, references: :users, index: true
+    add_reference   :questions, :author, references: :users, index: true, null: false
     add_foreign_key :questions, :users,  column: :author_id
     add_index       :questions, :title
   end

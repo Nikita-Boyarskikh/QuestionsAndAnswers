@@ -1,11 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: 'N02@yandex.ru'
+  email: 'n02@yandex.ru'
   nickname: 'N02'
   fullname: 'Nikita Boyarskikh'
   birthday: '1998-09-22'
   encrypted_password: '$2a$10$L0QPK3gLWCLjN4hzWhJ9NOPfdIe56uFUfACrS0Fbw8Rgjg/wuDGpC' # superpass1
+  reset_password_token: <%= Devise.friendly_token %>
 
 two:
   email: 'user@mail.ru'
@@ -13,3 +14,4 @@ two:
   fullname: 'Test User'
   birthday: '2002-01-01'
   encrypted_password: '$2a$10$YP8djTqAMAx5htGQCUHhye6qurdZl0QQ/gG31.jWoORNnrzz4hjqG' # testuserpass
+  reset_password_token: <%= Devise.friendly_token %>

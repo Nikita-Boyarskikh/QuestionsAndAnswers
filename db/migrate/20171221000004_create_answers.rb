@@ -9,7 +9,7 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_reference   :answers, :author, references: :users, index: true
+    add_reference   :answers, :author, references: :users, index: true, null: false
     add_foreign_key :answers, :users,  column: :author_id
   end
 end

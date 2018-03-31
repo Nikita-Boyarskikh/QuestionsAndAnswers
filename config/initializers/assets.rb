@@ -17,3 +17,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # For deploying with Device to Heroku
 # Reference: https://github.com/plataformatec/devise#heroku
 Rails.application.config.assets.initialize_on_precompile = false
+Rails.application.config.assets.precompile += %w( common.css screen.css print.css )
