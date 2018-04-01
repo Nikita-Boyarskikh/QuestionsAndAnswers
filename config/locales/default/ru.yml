@@ -1,6 +1,7 @@
 ru:
   layouts:
     application:
+      noscript_message: 'Вы должны включить поддержку Javascript для работы этого сайта'
       title: 'Вопросы и ответы'
       Home: 'Домой'
       GetStarted: 'Начать'
@@ -25,3 +26,8 @@ ru:
       SuccessfullyUpdated: 'Ответ успешно обновлён.'
     form:
       NotSaved: 'Ответ не был сохранён из-за %{error}:'
+
+
+  tags:
+    index:
+      title: 'Все теги'

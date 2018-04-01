@@ -6,7 +6,7 @@ class Hash
       other_data = hash2[locale]
       [
         locale, (
-          data.respond_to? :reject ? (data.reject do |k, v|
+          data.respond_to?(:reject) ? (data.reject do |k, v|
             other_data and other_data.has_key? k and other_data[k] == v
           end) : data
         )

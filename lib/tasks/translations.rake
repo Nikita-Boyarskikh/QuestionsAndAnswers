@@ -1,17 +1,7 @@
 require 'utils/utils'
 
-def without_faker(data)
-  p '-------'
-  data.map do |k,v|
-    v_like_hash = v.respond_to?(:keys)
-    p v_like_hash
-    v.delete('faker') if v_like_hash
-    [k, (v_like_hash ? without_faker(v) : v)]
-  end.to_h
-end
-
 def syms_to_strs(hash)
-  JSON.parse(JSON[hash])
+  hash.to_s == hash ? hash : JSON.parse(JSON[hash])
 end
 
 def translations_from_locale_files
@@ -86,16 +76,16 @@ end
 namespace :translations do
   desc 'Print translations by :translation_key from :locale in :format format'
   task :print, [:locale, :translation_key, :format] => :environment do |t, args|
-    puts with_defaults(args) { |translates| without_faker translates  }
+    puts with_defaults(args)
   end
 
   desc 'Print auto configured translations by :translation_key from :locale in :format format'
   task :print_auto, [:locale, :translation_key, :format] => :environment do |t, args|
-    puts with_defaults(args) { |translates| auto without_faker translates }
+    puts with_defaults(args) { |translates| auto translates }
   end
 
   desc 'Print NOT TRANSLATED keys by :translation_key from :locale in :format format'
   task :print_new, [:locale, :translation_key, :format] => :environment do |t, args|
-    puts with_defaults(args, false) { |translates| new_keys without_faker translates }
+    puts with_defaults(args, false) { |translates| new_keys translates }
   end
 end

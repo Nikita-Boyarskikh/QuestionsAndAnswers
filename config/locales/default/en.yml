@@ -1,7 +1,9 @@
 en:
   layouts:
-    application:
+    meta_tags:
       title: 'Questions And Answers'
+    application:
+      noscript_message: 'You must enable Javascript support for correct work of this site'
       Home: 'Home'
       GetStarted: 'Get Started'
       Login: 'Log In'
@@ -25,3 +27,8 @@ en:
       SuccessfullyUpdated: 'Answer was successfully updated.'
     form:
       NotSaved: 'Answer was not saved because of the following %{error}:'
+
+
+  tags:
+    index:
+      title: 'Tags listing'

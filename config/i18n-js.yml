@@ -1,0 +1,3 @@
+translations:
+- file: "config/locales/js"
+  only: '*.*'
