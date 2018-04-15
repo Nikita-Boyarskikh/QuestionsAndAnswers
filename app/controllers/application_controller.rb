@@ -3,6 +3,17 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   protect_from_forgery with: :exception
   semantic_breadcrumb :index, :root_path
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit], unless: :devise_controller?
+
+  # Отключаем лайаут для всех xhr запросов
+  layout -> do
+    if request.xhr?
+      false
+    else
+      set_gon
+      'application'
+    end
+  end
 
   def set_locale
     if params[:locale]
@@ -12,6 +23,21 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def set_gon
+    #gon.current_user = current_user.public_fields if current_user
+  end
+
+  def authenticate_user!
+    unless current_user
+      if request.xhr?
+        render json: {msg: t('.unauthorized')}, status: 403
+      else
+        flash[:alert] = t('.permission_denied')
+        redirect_to root_path
+      end
+    end
+  end
 
   def verify_captcha(response)
     result = RestClient.post(
@@ -24,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :avatar, :nickname, :fullname])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :avatar, :nickname, :fullname, :password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:nickname, :remember_me, :password])
   end
 end
