@@ -10,8 +10,10 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "module": "es6",
+    "module": "esnext",
     "target": "es5",
+    "jsx": "react",
+    "moduleResolution": "node",
     "allowJs": false,
     "downlevelIteration": true,
     "lib": [

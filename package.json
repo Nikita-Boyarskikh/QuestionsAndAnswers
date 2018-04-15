@@ -1,11 +1,97 @@
 {
   "name": "QuestionsAndAnswers",
+  "description": "Port of existing Django project to RubyOnRails with some addition features",
+  "main": "src/index.js",
+  "author": "Nikita Boyarskikh <N02@yandex.ru>",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nikita-Boyarskikh/QuestionsAndAnswers.git"
+  },
   "devDependencies": {
+    "@types/enzyme": "^3.1.8",
+    "@types/enzyme-adapter-react-16": "^1.0.1",
+    "@types/jest": "^22.1.1",
+    "@types/jquery": "^3.3.1",
+    "@types/node": "^8.9.1",
+    "@types/react": "^16.0.36",
+    "@types/react-bootstrap": "^0.32.2",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-list": "^0.8.2",
+    "@types/react-loadable": "^5.3.2",
+    "@types/react-router-dom": "^4.2.3",
+    "@types/react-test-renderer": "^16.0.0",
     "@types/semantic-ui": "^2.2.6",
-    "browserify": "^15.0.0",
+    "browserify": "^15.2.0",
     "browserify-incremental": "^3.1.1",
-    "typescript": "^2.6.2",
-    "@types/jquery": "^3.2.17"
+    "create-react-app": "^1.5.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2",
+    "react-docgen-typescript": "^1.2.3",
+    "react-styleguidist": "^6.2.2",
+    "redux-devtools": "^3.4.1",
+    "source-map-explorer": "^1.5.0",
+    "typescript": "^2.7.1"
+  },
+  "dependencies": {
+    "ajv": "^5.5.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest-enzyme": "^4.2.0",
+    "l20n": "^5.0.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-list": "^0.8.8",
+    "react-loadable": "^5.3.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts-ts": "2.13.0",
+    "react-semantic": "^0.1.1",
+    "react-semantic-redux-form": "^1.2.6",
+    "react-test-renderer": "^16.2.0",
+    "redux": "^3.7.2",
+    "semantic-ui": "^2.3.0"
+  },
+  "scripts": {
+    "analyze": "source-map-explorer build/dist/static/js/main.*",
+    "precommit": "lint-staged",
+    "start-js": "react-scripts-ts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts-ts build",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "build": "npm-run-all -p watch-css start-js",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "test": "react-scripts-ts test",
+    "test:debug": "react-scripts-ts --inspect-brk test --runInBand",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "eject": "react-scripts-ts eject"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "text"
+    ]
   }
 }
