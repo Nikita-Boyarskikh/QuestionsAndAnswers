@@ -2,7 +2,7 @@ ActiveAdmin.register Role do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# permit_params :list, :of, :attributes, :on, :model
+permit_params :resource_type, :name
 #
 # or
 #
@@ -13,8 +13,8 @@ ActiveAdmin.register Role do
 # end
 
 # Limit actions available to your users by adding them to the 'except' array
-# actions :all, except: []
-
+actions :index, :show
+#
 # Add or remove filters (you can use any ActiveRecord scope) to toggle their
 # visibility in the sidebar
 # filter :id

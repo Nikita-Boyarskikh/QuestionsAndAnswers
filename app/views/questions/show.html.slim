@@ -1,4 +1,4 @@
-p#notice = notice
+- title [t('questions/title'), truncate(@question.title)]
 
 p
   strong Title:
@@ -11,10 +11,26 @@ p
   = @question.rating
 p
   strong Tags:
-  = @question.tags.select(:title).map {|t| t.title}.join(', ')
+  == @question.tags.select(:id, :title).map { |t| link_to t.title, t }.join ' | '
 p
   strong Author:
   = @question.author.fullname
+
+h1 Answers:
+- @question.answers.each do |answer|
+  hr
+  = link_to [@question, answer] do
+    p
+      strong Text:
+      = answer.text
+    p
+      strong Rating:
+      = answer.rating
+    p
+      strong Author:
+      = answer.author.fullname
+
+= link_to t('.ask'), new_question_answer_path(@question), class: 'ui button large primary'
 
 => link_to 'Edit', edit_question_path(@question)
 '|

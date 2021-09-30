@@ -160,6 +160,7 @@ group :development, :test do
 
   # Linter for *.rb files
   gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 
   # Linter for *.slim files
   gem 'slim_lint', require: false
@@ -175,6 +176,9 @@ group :test do
   ###########
   # Linters #
   ###########
+
+  # RSpec
+  gem 'rspec'
 
   # Database cleaner
   gem 'database_cleaner'
@@ -212,7 +216,7 @@ group :staging, :production do
   gem 'health_check'
 
   # For embedded V8 for ruby
-  gem 'therubyracer', platforms: :ruby
+  gem 'mini_racer', platforms: :ruby
 
   # Performance checker
   gem 'newrelic_rpm'

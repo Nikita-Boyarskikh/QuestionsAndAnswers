@@ -1,7 +1,13 @@
-p#notice = notice
+- title [t('tags/title'), @tag.title]
 
 p
   strong Title:
   = @tag.title
+p
+  strong Questions:
+  .ui.hidden.divider
+  .ui.link.two.stackable.cards
+    - @tag.questions.each do |question|
+      = render partial: 'questions/card', locals: {question: question}
 
 =< link_to 'Back', tags_path

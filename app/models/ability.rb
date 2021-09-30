@@ -11,13 +11,13 @@ class Ability
         end
 
         # Load addition permission rules from database
-        user_permissions = user.permissions
+        user_permissions = user and user.permissions
         common_permissions = Permission.where(user_id: nil)
         can do |action, subject_class, subject|
           common_permissions.any? do |permission|
             permission.allow_subject_class == subject_class.to_s && permission.check_for_subject(subject)
-          end
-          user_permissions.find_all_by_action(aliases_for_action(action)).any? do |permission|
+          end or
+          (user_permissions && user_permissions.find_by(action: aliases_for_action(action)) or []).any? do |permission|
             permission.allow_subject_class == subject_class.to_s && permission.check_for_subject(subject) &&
                 (subject.nil? || permission.user_id == subject.author.id)
           end
@@ -25,8 +25,8 @@ class Ability
         cannot do |action, subject_class, subject|
           common_permissions.any? do |permission|
             permission.disallow_subject_class == subject_class.to_s && permission.check_for_subject(subject)
-          end
-          user_permissions.find_all_by_action(aliases_for_action(action)).any? do |permission|
+          end or
+          (user_permissions && user_permissions.find_by(action: aliases_for_action(action)) || []).any? do |permission|
             permission.disallow_subject_class == subject_class.to_s && permission.check_for_subject(subject) &&
                 (subject.nil? || permission.user_id == subject.author.id)
           end

@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def to_s
     self.fullname || self.nickname
   end
+
+  def admin?
+    has_role?(:admin)
+  end
 end

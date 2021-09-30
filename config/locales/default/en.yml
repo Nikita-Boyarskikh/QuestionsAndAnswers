@@ -10,6 +10,7 @@ en:
       Signup: 'Sign Up'
 
   global:
+    permission_denied: 'Permission denied'
     error: 'error'
     Edit: 'Edit'
     Details: 'Details'

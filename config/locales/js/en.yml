@@ -1,3 +1,4 @@
 en:
   js:
+    unauthorized: 'unauthorized'
     key: value

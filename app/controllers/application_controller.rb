@@ -31,10 +31,10 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless current_user
       if request.xhr?
-        render json: {msg: t('.unauthorized')}, status: 403
+        render json: {msg: t('js.unauthorized')}, status: 403
       else
-        flash[:alert] = t('.permission_denied')
-        redirect_to root_path
+        flash[:alert] = t('global.permission_denied')
+        # redirect_to new_user_session
       end
     end
   end

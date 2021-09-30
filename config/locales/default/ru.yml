@@ -9,6 +9,7 @@ ru:
       Signup: 'Регистрация'
 
   global:
+    permission_denied: 'Доступ запрещён'
     error: 'ошибка'
     Edit: 'Редактировать'
     Details: 'Подробнее'

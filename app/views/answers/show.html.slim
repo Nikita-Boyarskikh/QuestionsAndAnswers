@@ -1,4 +1,6 @@
-p#notice = notice
+- title [t('answers/title'), truncate(@question.title), truncate(@answer.text)]
+
+h1.ui.header = @answer.text
 
 p
   strong Text:
@@ -11,8 +13,10 @@ p
   = @answer.is_best
 p
   strong Question:
-  = @answer.question
+.ui.hidden.divider
+.ui.link.cards
+  = render partial: 'questions/card', locals: { question: @answer.question }
 
-=> link_to 'Edit', edit_answer_path(@answer)
+=> link_to 'Edit', edit_question_answer_path(@answer.question, @answer)
 '|
-=< link_to 'Back', answers_path
+=< link_to 'Back', question_path(@answer.question)

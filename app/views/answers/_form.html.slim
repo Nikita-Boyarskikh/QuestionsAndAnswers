@@ -1,7 +1,7 @@
-= form_for @answer do |f|
+= form_for([@question, @answer], html: { class: 'ui form segment' }) do |f|
   - if @answer.errors.any?
     #error_explanation
-      h2 = t('.NotSaved', error: pluralize(@answer.errors.count, t('global.error')))
+      h2 = t('errors.messages.not_saved', count: @answer.errors.count, resource: 'answer')
       ul
         - @answer.errors.full_messages.each do |message|
           li = message
@@ -10,12 +10,6 @@
     = f.label :text
     = f.text_area :text
   .field
-    = f.label :rating
-    = f.number_field :rating
-  .field
-    = f.label :is_best
-    = f.check_box :is_best
-  .field
-    = f.label :question
-    = f.text_field :question
+    = f.label :tags
+    = f.collection_select :tag_ids, Tag.all, :id, :title, {}, { multiple: true }
   .actions = f.submit

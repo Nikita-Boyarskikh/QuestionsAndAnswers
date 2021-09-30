@@ -1,0 +1,19 @@
+meta content="IE=edge" http-equiv="X-UA-Compatible"
+meta content="width=device-width, initial-scale=1" name="viewport"
+meta charset="utf-8"
+meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+meta name="theme-color" content="#000000"
+
+= display_meta_tags site: t('.title')
+/ Default title for page takes from translations t('.title) for each page
+
+= display_meta_tags description: ''
+= display_meta_tags keywords: ''
+= display_meta_tags author: 'Nikita-Boyarskikh <N02@yandex.ru>'
+
+/ TODO: Specify canonical, next and pref links for each page
+/= display_meta_tags canonical: t('/')
+/= display_meta_tags next: t('.title')
+/= display_meta_tags pref: t('.title')
+
+= csrf_meta_tags

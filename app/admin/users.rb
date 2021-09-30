@@ -1,8 +1,8 @@
 ActiveAdmin.register User do
   permit_params do
-    permin = [:email, :password, :password_confirmation]
+    permit = [:email, :password, :password_confirmation, :fullname, :nickname, :birthday, ]
     ability = Ability.new(current_user)
-    ability.can?(:manage, :user) ? permit: []
+    ability.can?(:manage, :user) ? permit : []
   end
 
   index do
@@ -25,6 +25,9 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :fullname
+      f.input :nickname
+      f.input :birthday
     end
     f.actions
   end

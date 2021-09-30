@@ -1,4 +1,7 @@
-p #{t(:Welcome) + @nickname}!
-p #{t (:YouCanConfirmYourAccountEmailThroughTheLinkBelow)}:
+- require 'devise/version'
 p
-  = link_to t(:ConfirmAccount), confirmation_url(@resource, confirmation_token: @token)
+  = t('.greeting', recipient: @resource.email)
+p
+  = t('.instruction')
+p
+  = link_to t('.action'), confirmation_url(@resource, :confirmation_token => @token)

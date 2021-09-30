@@ -1,0 +1,76 @@
+body.pushable
+  .ui.large.top.fixed.borderless.menu.transition.hidden
+    = link_to t('.home'), root_path, class: 'active item'
+    .right.menu
+      .ui.dropdown.item
+        = t '.language'
+        i.dropdown.icon
+        .menu
+          = link_to t('.english'), '?locale=en', class: 'active selected item'
+          = link_to t('.russian'), '?locale=ru', class: 'item'
+      .ui.category.search.item
+        .ui.transparent.icon.input
+          input.prompt type="text" placeholder="Search..."
+          i.search.link.icon
+      .item
+        a.ui.button#login = t '.login'
+      .item
+        a.ui.primary.button#signup = t '.signup'
+  .ui.vertical.inverted.sidebar.menu.left
+    = link_to t('.home'), root_path, class: 'active item'
+    .ui.dropdown.item
+      = t '.language'
+      i.dropdown.icon
+      .menu
+        = link_to t('.english'), '?locale=en', class: 'active selected item'
+        = link_to t('.russian'), '?locale=ru', class: 'item'
+    .ui.category.search.item
+      .ui.transparent.icon.input.inverted
+        input.prompt type="text" placeholder="Search..."
+        i.search.link.icon
+    = link_to t('.login'), new_user_session_path, class: 'item'
+    /= link_to t('.signup'), new_registration_path, class: 'item'
+  .pusher
+    .ui.inverted.vertical.masthead.center.aligned.segment
+      .ui.container
+        .ui.large.secondary.inverted.pointing.menu
+          a.toc.item
+            i.sidebar.icon
+          = link_to t('.home'), root_path, class: 'active item'
+          .right.item
+            .ui.dropdown.item
+              = t '.language'
+              i.dropdown.icon
+              .menu
+                = link_to t('.english'), '?locale=en', class: 'active selected item'
+                = link_to t('.russian'), '?locale=ru', class: 'item'
+            .ui.category.search.item
+              .ui.transparent.icon.input.inverted
+                input.prompt type="text" placeholder="Search..."
+                i.search.link.icon
+            = link_to t('.login'), new_user_session_path, class: 'ui inverted button'
+            /= link_to t('.signup'), new_user_registration_path, class: 'ui inverted button'
+      .ui.text.container
+        h1.ui.inverted.header
+          | #{t '.title'}
+        .ui.huge.primary.button
+          | #{t '.set_started'}
+          i.right.arrow.icon
+    .ui.vertical.stripe.segment.center.aligned
+      - flash.each do |key, value|
+        div class="#{flash_class(key)} closable"
+          i.close.icon
+          = value
+      .ui.text.container.segment.padded.piled
+        == yield
+      .ui.pagination.menu
+        .disabled.item <
+        a.active.item 1
+        a.item 2
+        a.item 3
+        a.item 4
+        a.item 5
+        .disabled.item ...
+        a.item >
+  div ng-model="ctrl.user.recaptcha" vc-recaptcha='' key='#{Rails.application.secrets[:recaptcha][:public_key]}'
+  script src='https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async='' defer=''

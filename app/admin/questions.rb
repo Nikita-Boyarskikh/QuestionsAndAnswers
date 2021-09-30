@@ -1,8 +1,7 @@
 ActiveAdmin.register Question do
-  belongs_to :user
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  permit_params :title, :text, :author
+  permit_params :title, :text, :author_id, :rating
 #
 # or
 #

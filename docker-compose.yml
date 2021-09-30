@@ -19,7 +19,7 @@ services:
 
   db:
     container_name: queueoverflow-db
-    image: postgres
+    image: postgres:alpine
     env_file:
       - .env
     volumes:
